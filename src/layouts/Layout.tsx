@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import BaseDialog from '@/components/dialog/BaseDialog';
+import Footer from '@/layouts/Footer';
 import Navbar from '@/layouts/Navbar';
 import useDialogStore from '@/store/useDialogStore';
 
@@ -22,6 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         open={open}
         options={state}
       />
+      <Footer />
     </div>
   );
 }
