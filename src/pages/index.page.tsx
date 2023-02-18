@@ -7,7 +7,7 @@ import Form from '@/components/form/Form';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/Typography';
-import { Cards } from '@/constant/landing';
+import { Agencies, Cards } from '@/constant/landing';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
 import logger from '@/lib/logger';
@@ -37,6 +37,29 @@ const Languages = [
   { value: 'python', label: 'Python' },
 ] as const;
 
+const Companies = [
+  {
+    label: 'Asana',
+    path: '/landing/asana.png',
+  },
+  {
+    label: 'Adobe',
+    path: '/landing/adobe.png',
+  },
+  {
+    label: 'Active Campaign',
+    path: '/landing/activecampaign.png',
+  },
+  {
+    label: 'Airtasker',
+    path: '/landing/airtasker.png',
+  },
+  {
+    label: 'Ariwallex',
+    path: '/landing/airwallex.png',
+  },
+] as const;
+
 export default function Home() {
   const onSubmit = (data: JobFormValues) => {
     logger('Form Values', data);
@@ -53,7 +76,7 @@ export default function Home() {
           )}
         >
           <div className='layout flex flex-col justify-center h-full'>
-            <div className='max-w-xl'>
+            <div className='md:max-w-xl max-w-md'>
               <Typography as='h1' variant='h1'>
                 Easy to <span className='text-primary-500'>Hire</span>
               </Typography>
@@ -77,11 +100,14 @@ export default function Home() {
                       <input
                         {...register('keywords')}
                         placeholder='Search'
-                        className='py-3 px-10 outline-none'
+                        className='py-3 pl-10 outline-none'
                       />
                       <select
                         {...register('roles')}
-                        className='outline-none border-none focus:outline-none active:outline-none'
+                        className={clsxm(
+                          'outline-none focus:outline-none active:outline-none py-3',
+                          'border-l-2 border-r-0 border-y-0 border-secondary-100'
+                        )}
                       >
                         {roles.map((role) => (
                           <option key={role.value} value={role.value}>
@@ -116,15 +142,15 @@ export default function Home() {
               width={654}
               height={665}
               alt=''
-              className='absolute bottom-0 right-0'
+              className='absolute bottom-0 right-0 md:block hidden'
             />
           </div>
         </section>
         <section className='bg-secondary-600'>
-          <div className='layout flex flex-col min-h-screen py-8'>
-            <div className='flex flex-wrap gap-x-12 gap-y-3 justify-between mt-12'>
+          <div className='layout flex flex-col min-h-screen py-20'>
+            <div className='flex flex-wrap gap-x-0 md:gap-x-12 gap-y-3 md:justify-between justify-center items-center mt-12'>
               {Cards.map((card, index) => (
-                <Card
+                <CardProfile
                   key={index}
                   title={card.title}
                   description={card.description}
@@ -150,7 +176,7 @@ export default function Home() {
                   great products. We are a community of developers and agencies
                   that are passionate about building great products.
                 </Typography>
-                <div className='mt-8 space-x-4'>
+                <div className='mt-8 flex gap-x-4 flex-wrap gap-y-2'>
                   {Languages.map((language) => (
                     <Button
                       key={language.value}
@@ -168,8 +194,80 @@ export default function Home() {
                 width={459}
                 height={470}
                 alt=''
-                className='absolute top-1/4 right-20 w-1/4'
+                className='absolute top-1/4 right-20 w-1/4 md:block hidden'
               />
+            </div>
+          </div>
+        </section>
+        <section className='bg-[#F6FFFC]'>
+          <div className='layout min-h-scree py-20'>
+            <Typography as='h2' variant='h2' className=''>
+              Agencies
+            </Typography>
+            <div className='flex flex-wrap gap-x-4 gap-y-6 items-center justify-center mt-6'>
+              {Agencies.map((agency, index) => (
+                <CardAgency key={index} {...agency} className='mt-12' />
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className='bg-[#F6FFFC]'>
+          <div className='layout pt-20 flex justify-center items-center'>
+            <div
+              className={clsxm(
+                'bg-secondary-600 rounded-lg px-12 md:py-16 py-8',
+                'grid md:grid-cols-2 grid-cols-1'
+              )}
+            >
+              <div>
+                <Typography as='h2' variant='h2' color='primary'>
+                  100+ Countries
+                </Typography>
+                <Typography as='h2' variant='h2' color='white'>
+                  Regustered Over Our Platform
+                </Typography>
+                <Typography
+                  as='p'
+                  variant='p'
+                  color='gray'
+                  className='mt-4 text-justify'
+                >
+                  We are a community of developers and agencies that are
+                  passionate about building great products. We are a community
+                  of developers and agencies that are passionate about building
+                  great products. We are a community of developers and agencies
+                  that are passionate about building great products.
+                </Typography>
+              </div>
+              <div className='md:mt-0 mt-8'>
+                <NextImage
+                  src='/landing/map.png'
+                  width={690}
+                  height={447}
+                  layout='responsive'
+                  alt=''
+                  className='w-full'
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className='bg-[#F6FFFC] border-b-[24px] border-primary-600'>
+          <div className='layout py-20'>
+            <Typography as='h2' variant='h2' className='text-center'>
+              Join 500+ Great Big Multinational Companies
+            </Typography>
+            <div className='flex flex-warp justify-center items-center mt-4'>
+              {Companies.map((company, index) => (
+                <NextImage
+                  key={index}
+                  src={company.path}
+                  width={200}
+                  height={100}
+                  layout='responsive'
+                  alt=''
+                />
+              ))}
             </div>
           </div>
         </section>
@@ -178,19 +276,91 @@ export default function Home() {
   );
 }
 
-type CardProps = {
+// Card Agency
+type CardAgencyProps = {
+  id_: string;
+  country: string;
+  role: string;
+  developer: number;
+  experience: string[];
+} & React.HTMLAttributes<HTMLDivElement>;
+
+function CardAgency({
+  id_,
+  country,
+  role,
+  experience,
+  developer,
+  ...rest
+}: CardAgencyProps) {
+  return (
+    <div
+      {...rest}
+      className={clsxm(
+        'border-t-4 border-primary-600 p-4 bg-white',
+        'w-[300px] h-[320px]'
+      )}
+    >
+      <div className='border-l-2 border-primary-500 bg-[#F9F9F9] px-4 py-2'>
+        <Typography as='h3' variant='h3'>
+          {id_}
+        </Typography>
+        <Typography as='p' variant='p'>
+          {country}
+        </Typography>
+      </div>
+      <Typography as='h6' variant='h6' className='mt-4'>
+        {role}
+      </Typography>
+      <div className='mt-4 border-y-2 border-secondary-100 py-2'>
+        {Object.entries(experience).map(([key, value]) => (
+          <Typography
+            as='p'
+            variant='l1'
+            key={key}
+            className='text-secondary-300'
+          >
+            {value}
+          </Typography>
+        ))}
+      </div>
+      <div className='mt-4 flex items-center'>
+        <NextImage src='/landing/developer.png' width={69} height={26} alt='' />
+        <Typography
+          as='p'
+          variant='s2'
+          className='-translate-x-[20px] -translate-y-[1px]'
+        >
+          {developer}
+        </Typography>
+        <Typography as='p' variant='b2' className='text-secondary-300'>
+          Developers
+        </Typography>
+      </div>
+    </div>
+  );
+}
+
+//  Card Profile
+type CardProfileProps = {
   title: string;
   description: string;
   icon: IconType;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-function Card({ title, description, icon: Icon }: CardProps) {
+function CardProfile({
+  title,
+  description,
+  icon: Icon,
+  ...rest
+}: CardProfileProps) {
   return (
     <div
       className={clsxm(
         'h-[260px] w-[320px] bg-white rounded-md shadow-card p-4',
         'flex flex-col'
       )}
+      {...rest}
     >
       <div className='relative bg-primary-600 w-16 h-16 rounded-md'>
         <div

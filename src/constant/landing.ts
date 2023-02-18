@@ -27,3 +27,48 @@ export const Cards: {
     icon: FiUsers,
   },
 ];
+
+export const Agencies = [
+  {
+    id_: 'CA462548542',
+    country: 'Canada',
+    role: 'Software Development Agency',
+    experience: ['7+ Years of experience', '12+ Years of Experience'],
+    developer: 29,
+  },
+  {
+    id_: 'CA462548542',
+    country: 'Canada',
+    role: 'Soft Development Agency',
+    experience: ['7+ Years of experience', '12+ Years of Experience'],
+    developer: 12,
+  },
+  {
+    id_: 'CA462548542',
+    country: 'Canada',
+    role: 'Software Development Agency',
+    experience: ['7+ Years of experience', '12+ Years of Experience'],
+    developer: 10,
+  },
+  {
+    id_: 'CA462548542',
+    country: 'Canada',
+    role: 'Software Development Agency',
+    experience: ['7+ Years of experience', '12+ Years of Experience'],
+    developer: 12,
+  },
+  {
+    id_: 'CA462548542',
+    country: 'Canada',
+    role: 'Software Development Agency',
+    experience: ['7+ Years of experience', '12+ Years of Experience'],
+    developer: 43,
+  },
+  {
+    id_: 'CA462548542',
+    country: 'Canada',
+    role: 'Software Development Agency',
+    experience: ['7+ Years of experience', '12+ Years of Experience'],
+    developer: 12,
+  },
+];
