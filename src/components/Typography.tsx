@@ -53,8 +53,8 @@ export default function Typography<T extends React.ElementType>({
       className={clsxm(
         // Variants
         [
-          variant === 'h1' && 'text-4xl font-bold md:text-6xl',
-          variant === 'h2' && 'text-3xl font-semibold md:text-5xl',
+          variant === 'h1' && 'text-4xl font-bold md:text-5xl',
+          variant === 'h2' && 'text-3xl font-semibold md:text-4xl',
           variant === 'h3' && 'text-2xl font-semibold',
           variant === 'h4' && 'text-xl font-normal md:text-2xl',
           variant === 'h5' && 'text-lg font-normal md:text-xl',
@@ -73,6 +73,8 @@ export default function Typography<T extends React.ElementType>({
 
         // Colors
         [
+          color === 'white' && 'text-white',
+          color === 'gray' && 'text-[#D1D1D1]',
           color === 'primary' && 'text-gray-900',
           color === 'danger' && 'text-red-500',
         ],

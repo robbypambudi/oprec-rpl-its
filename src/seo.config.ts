@@ -6,7 +6,7 @@ const config: DefaultSeoProps = {
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://www.robbypambudi.com/',
+    url: 'https://www.hiring.robbypambudi.com/',
     siteName: 'SiteName',
   },
   twitter: {
@@ -14,13 +14,13 @@ const config: DefaultSeoProps = {
     site: '@site',
     cardType: 'summary_large_image',
   },
-  titleTemplate: '%s | RobbyPambudi',
+  titleTemplate: '%s | Hiring',
   description: 'this is a description',
-  defaultTitle: 'RobbyPambudi',
+  defaultTitle: 'Hiring',
   additionalLinkTags: [
     {
       rel: 'icon',
-      href: '/favicon.ico',
+      href: '/images/favicon.ico',
     },
   ],
 };
