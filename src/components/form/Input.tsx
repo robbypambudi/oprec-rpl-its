@@ -22,6 +22,7 @@ const Input = ({
   showValid = false,
   helperText,
   type = 'text',
+  ...rest
 }: InputProps) => {
   const {
     register,
@@ -37,6 +38,7 @@ const Input = ({
       <div className='relative'>
         <input
           type={type}
+          {...rest}
           {...register(id, validate)}
           className={clsxm(
             'rounded-md',
