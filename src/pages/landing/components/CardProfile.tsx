@@ -19,7 +19,7 @@ export default function CardProfile({
     <div
       className={clsxm(
         'h-[260px] w-[320px] bg-white rounded-md shadow-card p-4',
-        'flex flex-col'
+        'flex flex-col hover:scale-105 transition-all duration-300 ease-in-out'
       )}
       {...rest}
     >

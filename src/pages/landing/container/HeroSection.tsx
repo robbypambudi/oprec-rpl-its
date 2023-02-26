@@ -97,7 +97,7 @@ export default function HeroSection() {
         width={654}
         height={665}
         alt=''
-        className='absolute bottom-0 right-0 md:block hidden'
+        className='absolute bottom-0 right-0 w-1/2 md:block hidden'
       />
     </div>
   );

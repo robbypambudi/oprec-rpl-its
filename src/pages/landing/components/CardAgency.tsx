@@ -22,8 +22,8 @@ export default function CardAgency({
     <div
       {...rest}
       className={clsxm(
-        'border-t-4 border-primary-600 p-4 bg-white',
-        'w-[300px] h-[320px]'
+        'border-t-4 border-primary-600 p-4 bg-white shadow',
+        'w-[300px] h-[320px] hover:scale-105 transition-all duration-300 ease-in-out'
       )}
     >
       <div className='border-l-2 border-primary-500 bg-[#F9F9F9] px-4 py-2'>

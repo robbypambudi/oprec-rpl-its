@@ -19,7 +19,7 @@ export default function Navbar() {
   const [colorChange, setColorChange] = React.useState(false);
   React.useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 30) {
         setColorChange(true);
       } else {
         setColorChange(false);
@@ -43,7 +43,7 @@ export default function Navbar() {
         'fixed top-0 z-[100] w-full bg-transparent',
         colorChange && [
           'backdrop-filter backdrop-blur-sm bg-white shadow-md border-b border-secondary-100',
-          'duration-300 ',
+          'duration-300',
         ]
       )}
     >
