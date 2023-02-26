@@ -65,7 +65,9 @@ export default function Navbar() {
         </nav>
         <div className='hidden md:flex gap-x-4 justify-center items-center'>
           <FiBell className='text-3xl text-gray-900' />
-          <FiUser className='text-3xl text-gray-900' />
+          <UnstyledLink href='/login'>
+            <FiUser className='text-3xl text-gray-900' />
+          </UnstyledLink>
         </div>
         <div className='relative z-50 mr-0 flex md:hidden'>
           {!isOpen && (

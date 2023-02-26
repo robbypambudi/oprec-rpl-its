@@ -68,8 +68,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           //#region  //*=========== Variants ===========
           [
             variant === 'primary' && [
-              'border border-primary-600 text-primary-600',
-              'disabled:bg-primary-100 disabled:border-primary-300',
+              'border border-primary-600 text-primary-600 hover:text-white',
+              'disabled:bg-primary-100 disabled:border-primary-300 hover:disable:text-primary-300',
               'hover:bg-primary-600 active:bg-primary-700 hover:text-white',
             ],
             variant === 'outline' && [
@@ -91,7 +91,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             ],
           ],
           //#endregion  //*======== Variants ===========
-          'disabled:cursor-not-allowed',
+          'disabled:cursor-not-allowed ',
           isLoading &&
             'relative text-transparent transition-none hover:text-transparent disabled:cursor-wait',
           className
@@ -120,6 +120,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                   size === 'base' && 'text-lg md:text-xl',
                   size === 'sm' && 'text-sm md:text-lg',
                 ],
+
                 leftIconClassName
               )}
             />

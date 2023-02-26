@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
+  baseURL: 'https://itsexpo.dev-its.site/api',
   headers: {
     'Content-Type': 'application/json',
     'Accept-Type': 'application/json',

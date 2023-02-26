@@ -5,7 +5,15 @@ import Footer from '@/layouts/Footer';
 import Navbar from '@/layouts/Navbar';
 import useDialogStore from '@/store/useDialogStore';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  children,
+  withNav = true,
+  withFoot = true,
+}: {
+  children: React.ReactNode;
+  withNav?: boolean;
+  withFoot?: boolean;
+}) {
   //#region  //*=========== Store ===========
   const open = useDialogStore.useOpen();
   const state = useDialogStore.useState();
@@ -15,7 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className='overflow-hidden'>
-      <Navbar />
+      {withNav && <Navbar />}
       {children}
       <BaseDialog
         onClose={handleClose}
@@ -23,7 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         open={open}
         options={state}
       />
-      <Footer />
+      {withFoot && <Footer />}
     </div>
   );
 }
