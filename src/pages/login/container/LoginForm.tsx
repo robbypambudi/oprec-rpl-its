@@ -5,6 +5,7 @@ import Button from '@/components/buttons/Button';
 import Form from '@/components/form/Form';
 import Input from '@/components/form/Input';
 import { EMAIL_REGEX } from '@/constant/regex';
+import { api } from '@/lib/api';
 
 type LoginForm = {
   email: string;
@@ -14,14 +15,11 @@ type LoginForm = {
 export default function LoginForm() {
   const route = useRouter();
 
-  const onSubmit = () => {
+  const onSubmit = (data: LoginForm) => {
     toast.promise(
-      new Promise((resolve) => {
-        setTimeout(() => {
-          route.push('/lengkapi');
-          resolve(true);
-        }, 2000);
-      }),
+      api
+        .post('/login', data)
+        .then((res) => res.status === 200 && route.push('/lengkapi')),
       {
         loading: 'Loading',
         success: 'Success',

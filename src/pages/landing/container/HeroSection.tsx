@@ -21,8 +21,6 @@ export default function HeroSection() {
 
   const { data: queryData } = useQuery<ApiReturn<Roles>>(['/role']);
 
-  logger('queryData', queryData);
-
   return (
     <div className='layout flex flex-col justify-center h-full'>
       <div className='md:max-w-xl max-w-md'>

@@ -1,13 +1,16 @@
+import { useQuery } from '@tanstack/react-query';
+
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/Typography';
-import { Agencies } from '@/constant/landing';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
 import CardAgency from '@/pages/landing/components/CardAgency';
 import AgencySection from '@/pages/landing/container/AgencySection';
 import HeroSection from '@/pages/landing/container/HeroSection';
 import SkillSection from '@/pages/landing/container/SkillSection';
+import { Agency } from '@/types/agencies';
+import { ApiReturn } from '@/types/axios';
 
 const Companies = [
   {
@@ -33,6 +36,8 @@ const Companies = [
 ] as const;
 
 export default function Home() {
+  const { data: agencies } = useQuery<ApiReturn<Agency>>(['/agency']);
+
   return (
     <Layout>
       <SEO title='' description='This is the home page' />
@@ -54,9 +59,13 @@ export default function Home() {
               Agencies
             </Typography>
             <div className='flex flex-wrap gap-x-4 gap-y-6 items-center justify-center mt-6'>
-              {Agencies.map((agency, index) => (
-                <CardAgency key={index} {...agency} className='mt-12' />
-              ))}
+              {agencies && (
+                <>
+                  {agencies.data.map((agency, index) => (
+                    <CardAgency key={index} {...agency} />
+                  ))}
+                </>
+              )}
             </div>
           </div>
         </section>

@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import * as React from 'react';
 import { BsDot } from 'react-icons/bs';
 
@@ -6,14 +7,11 @@ import NextImage from '@/components/NextImage';
 import Typography from '@/components/Typography';
 import { Cards } from '@/constant/landing';
 import CardProfile from '@/pages/landing/components/CardProfile';
+import { ApiReturn } from '@/types/axios';
+import { Language } from '@/types/language';
 
-const Languages = [
-  { value: 'javascript', label: 'JavaScript' },
-  { value: 'typescript', label: 'TypeScript' },
-  { value: 'php', label: 'PHP' },
-  { value: 'python', label: 'Python' },
-] as const;
 export default function SkillSection() {
+  const { data: queryData } = useQuery<ApiReturn<Language>>(['/language']);
   return (
     <div className='layout flex flex-col min-h-screen py-20'>
       <div className='flex flex-wrap gap-x-0 md:gap-x-12 gap-y-3 md:justify-between justify-center items-center mt-12'>
@@ -45,16 +43,17 @@ export default function SkillSection() {
             building great products.
           </Typography>
           <div className='mt-8 flex gap-x-4 flex-wrap gap-y-2'>
-            {Languages.map((language) => (
-              <Button
-                key={language.value}
-                size='sm'
-                leftIcon={BsDot}
-                leftIconClassName='text-xl'
-              >
-                {language.label}
-              </Button>
-            ))}
+            {queryData &&
+              queryData.data.map((language) => (
+                <Button
+                  key={language.value}
+                  size='sm'
+                  leftIcon={BsDot}
+                  leftIconClassName='text-xl'
+                >
+                  {language.label}
+                </Button>
+              ))}
           </div>
         </div>
         <NextImage
