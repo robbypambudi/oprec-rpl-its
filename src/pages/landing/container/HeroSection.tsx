@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import { FiSearch } from 'react-icons/fi';
 
 import Form from '@/components/form/Form';
@@ -5,19 +6,8 @@ import NextImage from '@/components/NextImage';
 import Typography from '@/components/Typography';
 import clsxm from '@/lib/clsxm';
 import logger from '@/lib/logger';
-
-const roles = [
-  { value: 'frontend', label: 'Frontend Developer' },
-  { value: 'backend', label: 'Backend Developer' },
-  { value: 'fullstack', label: 'Fullstack Developer' },
-  { value: 'mobile', label: 'Mobile Developer' },
-  { value: 'devops', label: 'DevOps Engineer' },
-  { value: 'designer', label: 'UI/UX Designer' },
-  { value: 'qa', label: 'Quality Assurance' },
-  { value: 'project', label: 'Project Manager' },
-  { value: 'marketing', label: 'Marketing' },
-  { value: 'sales', label: 'Sales' },
-];
+import { ApiReturn } from '@/types/axios';
+import { Roles } from '@/types/role';
 
 type JobFormValues = {
   keywords: string;
@@ -28,6 +18,10 @@ export default function HeroSection() {
   const onSubmit = (data: JobFormValues) => {
     logger('Form Values', data);
   };
+
+  const { data: queryData } = useQuery<ApiReturn<Roles>>(['/role']);
+
+  logger('queryData', queryData);
 
   return (
     <div className='layout flex flex-col justify-center h-full'>
@@ -64,11 +58,17 @@ export default function HeroSection() {
                     'border-l-2 border-r-0 border-y-0 border-secondary-100'
                   )}
                 >
-                  {roles.map((role) => (
-                    <option key={role.value} value={role.value}>
-                      {role.label}
-                    </option>
-                  ))}
+                  {queryData ? (
+                    <>
+                      {queryData.data.map((role, index) => (
+                        <option key={index} value={role.value}>
+                          {role.label}
+                        </option>
+                      ))}
+                    </>
+                  ) : (
+                    <option value=''>Loading...</option>
+                  )}
                 </select>
                 <button
                   type='submit'

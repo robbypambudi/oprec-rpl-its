@@ -12,7 +12,7 @@ import { DefaultSeo } from 'next-seo';
 import nProgress from 'nprogress';
 
 import Toast from '@/components/Toast';
-import api from '@/lib/api';
+import { api } from '@/lib/api';
 import SEO from '@/seo.config';
 
 Router.events.on('routeChangeStart', nProgress.start);

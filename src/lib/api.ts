@@ -1,22 +1,9 @@
 import axios from 'axios';
 
+const baseURL = 'http://localhost:3000/api';
+
 export const api = axios.create({
-  baseURL: 'https://itsexpo.dev-its.site/api',
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept-Type': 'application/json',
-  },
-  withCredentials: false,
+  baseURL,
+  timeout: 10000,
+  timeoutErrorMessage: 'Server timeout. Please try again later.',
 });
-
-api.defaults.withCredentials = false;
-
-api.interceptors.request.use(function (config) {
-  const token = localStorage.getItem('token');
-  if (config.headers) {
-    config.headers.Authorization = token ? `Bearer ${token}` : '';
-  }
-  return config;
-});
-
-export default api;
