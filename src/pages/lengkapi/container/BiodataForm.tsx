@@ -1,4 +1,5 @@
 import * as React from 'react';
+import toast from 'react-hot-toast';
 
 import Button from '@/components/buttons/Button';
 import DateForm from '@/components/form/DateForm';
@@ -6,7 +7,7 @@ import Form from '@/components/form/Form';
 import Input from '@/components/form/Input';
 import SelectInput from '@/components/form/SelectInput';
 import { PHONE_REGEX } from '@/constant/regex';
-import logger from '@/lib/logger';
+import { api } from '@/lib/api';
 
 type BiodataForm = {
   name_lengkap: string;
@@ -66,7 +67,14 @@ const provinsi = [
 
 export default function BiodataForm() {
   const onSubmit = (data: BiodataForm) => {
-    logger(data);
+    toast.promise(
+      api.post('/lengkapi', data).then((res) => res.status === 200),
+      {
+        loading: 'Loading',
+        success: 'Success',
+        error: 'Error',
+      }
+    );
   };
 
   return (

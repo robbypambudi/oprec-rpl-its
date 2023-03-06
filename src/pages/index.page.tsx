@@ -36,6 +36,7 @@ const Companies = [
 ] as const;
 
 export default function Home() {
+  // Isloading
   const { data: agencies } = useQuery<ApiReturn<Agency>>(['/agency']);
 
   return (

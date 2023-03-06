@@ -43,6 +43,7 @@ export default function SkillSection() {
             building great products.
           </Typography>
           <div className='mt-8 flex gap-x-4 flex-wrap gap-y-2'>
+            {/* query ? : */}
             {queryData &&
               queryData.data.map((language) => (
                 <Button
