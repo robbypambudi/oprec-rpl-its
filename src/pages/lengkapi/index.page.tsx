@@ -4,7 +4,6 @@ import BiodataForm from '@/pages/lengkapi/container/BiodataForm';
 
 export default function LengkapiPage() {
   return (
-    // <Layout withNav={true}>
     <Layout withNav>
       <main className=''>
         <section className='layout min-h-screen py-20 flex items-center justify-center'>

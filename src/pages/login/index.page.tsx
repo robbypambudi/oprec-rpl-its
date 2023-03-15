@@ -5,7 +5,7 @@ import LoginForm from '@/pages/login/container/LoginForm';
 
 export default function LoginPage() {
   return (
-    <Layout withNav={true}>
+    <Layout withNav>
       <main className='min-h-screen bg-[url(/images/landing/bg-hero.png)] bg-no-repeat bg-cover bg-center'>
         <section
           className={clsxm('py-20 flex items-center justify-center h-full')}

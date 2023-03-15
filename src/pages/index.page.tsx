@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import * as React from 'react';
 
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';

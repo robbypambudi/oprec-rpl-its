@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page Get Title 1`] = `
+<h1
+  class="text-4xl font-bold md:text-5xl text-black"
+>
+  Easy to 
+  <span
+    class="text-primary-500"
+  >
+    Hire
+  </span>
+</h1>
+`;
+
+exports[`Home Page renders correctly 1`] = `
+<a
+  class="hover:text-gray-600"
+  href="#home"
+>
+  Home
+</a>
+`;

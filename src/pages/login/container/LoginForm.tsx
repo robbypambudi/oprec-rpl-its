@@ -47,6 +47,7 @@ export default function LoginForm() {
           />
           <Input
             id='password'
+            type={'password'}
             label='Password'
             showValid={true}
             placeholder='Masukkan password'
